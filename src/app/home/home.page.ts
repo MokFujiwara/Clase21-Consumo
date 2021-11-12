@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,18 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private api: ApiService) {}
+
+  Listar(){
+    this.api.getPersonas().subscribe(
+      (res)=>{
+        console.log(res);
+      },
+      (e)=>{
+        console.log(e);
+      }
+
+    );
+  }
 
 }
